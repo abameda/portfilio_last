@@ -1,0 +1,635 @@
+امسح ال Email من خانات ال Contact
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Abdelhmeed Elshorbagy - IT Manager & Full-Stack Developer. Helping businesses build scalable web solutions and robust IT infrastructure.">
+  <meta name="keywords"
+    content="Abdelhmeed Elshorbagy, developer, portfolio, full-stack, web development, IT manager, MERN stack">
+  <meta name="author" content="Abdelhmeed Elshorbagy">
+  <link rel="icon" type="image/png" href="assets/cube-icon.png?v=3">
+  <link rel="apple-touch-icon" href="assets/cube-icon.png?v=3">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Abdelhmeed Elshorbagy | Developer Portfolio">
+  <meta property="og:description"
+    content="IT Manager & Full-Stack Developer. Helping businesses build scalable web solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shorbagy.space">
+  <meta property="og:image" content="assets/og-image.png?v=2">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#00f0ff">
+
+  <title>Abdelhmeed Elshorbagy | Developer Portfolio</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+
+<body>
+  <!-- Overlays -->
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Matrix Canvas -->
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" aria-label="Home">Elshorbagy@dev</a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span>☰</span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="#about" class="nav-link active">about</a></li>
+        <li><a href="#projects" class="nav-link">projects</a></li>
+        <li><a href="#skills" class="nav-link">skills</a></li>
+        <li><a href="#experience" class="nav-link">experience</a></li>
+        <li><a href="#contact" class="nav-link">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="hero-content">
+      <!-- ASCII Art Logo -->
+      <pre class="hero-ascii" aria-label="ASCII Art">
+ ███████╗██╗     ███████╗██╗  ██╗ ██████╗ ██████╗ ██████╗  █████╗  ██████╗██╗   ██╗
+ ██╔════╝██║     ██╔════╝██║  ██║██╔═══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚██╗ ██╔╝
+ █████╗  ██║     ███████╗███████║██║   ██║██████╔╝██████╔╝███████║██║  ███╗╚████╔╝ 
+ ██╔══╝  ██║     ╚════██║██╔══██║██║   ██║██╔══██╗██╔══██╗██╔══██║██║   ██║ ╚██╔╝  
+ ███████╗███████╗███████║██║  ██║╚██████╔╝██║  ██║██████╔╝██║  ██║╚██████╔╝  ██║   
+ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝   ╚═╝   
+      </pre>
+
+      <div class="hero-split">
+        <div class="hero-left">
+          <!-- Terminal Window -->
+          <div class="hero-terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">terminal — bash</span>
+            </div>
+
+            <div class="terminal-body">
+              <div class="terminal-line">
+                <span class="prompt">visitor@elshorbagy:~$</span>
+                <span class="command">./initialize.sh</span>
+              </div>
+              <div class="terminal-line">
+                <span class="output">> Loading modules... [████████████] 100%</span>
+              </div>
+              <div class="terminal-line">
+                <span class="output">> System initialized successfully.</span>
+              </div>
+              <div class="terminal-line">
+                <span class="output">> Welcome to my digital workspace.</span>
+              </div>
+              <br>
+              <div class="terminal-line">
+                <span class="prompt">visitor@elshorbagy:~$</span>
+                <span class="command">whoami</span>
+              </div>
+              <div class="terminal-line">
+                <span class="output" id="typing-output"></span><span class="cursor"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-effect">
+              <span>View Projects</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-effect" style="margin-left: 1rem;">
+              <span>Get in Touch</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Image (Moved to Right) -->
+        <div class="hero-profile">
+          <img src="assets/profileph.jpeg" alt="Abdelhmeed Elshorbagy" class="profile-image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll to explore</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">// Featured Work</p>
+        <h2 class="section-heading glitch" data-text="Projects">Projects</h2>
+      </div>
+
+      <div class="projects-grid stagger" id="projects-grid">
+        <!-- Project Card 1 - Dose Perfumes -->
+        <article class="project-card neon-border">
+          <div class="project-header">
+            <div class="dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="project-title">dose_perfumes.liquid</span>
+          </div>
+          <div class="project-body">
+            <div class="project-preview project-carousel">
+              <div class="carousel-container">
+                <div class="carousel-slides">
+                  <img src="assets/Dose-2.png" alt="Dose Perfumes Screenshot 1" class="carousel-slide active">
+                  <img src="assets/Dose-3.png" alt="Dose Perfumes Screenshot 2" class="carousel-slide">
+                  <img src="assets/Dose-4.png" alt="Dose Perfumes Screenshot 3" class="carousel-slide">
+                  <img src="assets/Dose-5.png" alt="Dose Perfumes Screenshot 4" class="carousel-slide">
+                  <img src="assets/Dose-6.png" alt="Dose Perfumes Screenshot 5" class="carousel-slide">
+                  <img src="assets/Dose-7.png" alt="Dose Perfumes Screenshot 6" class="carousel-slide">
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous image">‹</button>
+                <button class="carousel-btn carousel-next" aria-label="Next image">›</button>
+                <div class="carousel-dots"></div>
+              </div>
+            </div>
+            <h3 class="project-name">Dose Perfumes E-commerce</h3>
+            <p class="project-desc">A custom Shopify store with branding and SEO optimization. Designed to provide a
+              premium shopping experience for fragrance lovers.</p>
+            <div class="project-tech">
+              <span class="tech-badge">Shopify</span>
+              <span class="tech-badge">Liquid</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">SEO</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 - Financial ERP -->
+        <article class="project-card neon-border">
+          <div class="project-header">
+            <div class="dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="project-title">financial_erp.js</span>
+          </div>
+          <div class="project-body">
+            <div class="project-preview project-carousel">
+              <div class="carousel-container">
+                <div class="carousel-slides">
+                  <img src="assets/Finance-0.png" alt="Financial ERP Screenshot 1" class="carousel-slide active">
+                  <img src="assets/Finance-1.png" alt="Financial ERP Screenshot 2" class="carousel-slide">
+                  <img src="assets/Finance-2.png" alt="Financial ERP Screenshot 3" class="carousel-slide">
+                  <img src="assets/Finance-3.png" alt="Financial ERP Screenshot 4" class="carousel-slide">
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous image">‹</button>
+                <button class="carousel-btn carousel-next" aria-label="Next image">›</button>
+                <div class="carousel-dots"></div>
+              </div>
+            </div>
+            <h3 class="project-name">Financial ERP System</h3>
+            <p class="project-desc">A MERN stack web app for tracking business expenses and partner equity. Features
+              real-time dashboards and automated calculations.</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">MongoDB</span>
+              <span class="tech-badge">Express</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 - Amwag Attendance -->
+        <article class="project-card neon-border">
+          <div class="project-header">
+            <div class="dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="project-title">attendance_sys.tsx</span>
+          </div>
+          <div class="project-body">
+            <div class="project-preview project-carousel">
+              <div class="carousel-container">
+                <div class="carousel-slides">
+                  <img src="assets/Amwag-1.png" alt="Amwag Attendance Screenshot 1" class="carousel-slide active">
+                  <img src="assets/Amwag-2.png" alt="Amwag Attendance Screenshot 2" class="carousel-slide">
+                  <img src="assets/Amwag-3.png" alt="Amwag Attendance Screenshot 3" class="carousel-slide">
+                  <img src="assets/Anwag-4.png" alt="Amwag Attendance Screenshot 4" class="carousel-slide">
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous image">‹</button>
+                <button class="carousel-btn carousel-next" aria-label="Next image">›</button>
+                <div class="carousel-dots"></div>
+              </div>
+            </div>
+            <h3 class="project-name">Amwag Attendance System</h3>
+            <p class="project-desc">A complete attendance and leave management system for Amwag Travel. Tracks employee
+              check-ins, work hours, and generates automated reports.</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">MongoDB</span>
+              <span class="tech-badge">Dashboard</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 4 - LMS -->
+        <article class="project-card neon-border">
+          <div class="project-header">
+            <div class="dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="project-title">learning_platform.tsx</span>
+          </div>
+          <div class="project-body">
+            <div class="project-preview project-carousel">
+              <div class="carousel-container">
+                <div class="carousel-slides">
+                  <img src="assets/LMS-0.png" alt="LMS Screenshot 1" class="carousel-slide active">
+                  <img src="assets/LMS-1.png" alt="LMS Screenshot 2" class="carousel-slide">
+                  <img src="assets/LMS-2.png" alt="LMS Screenshot 3" class="carousel-slide">
+                  <img src="assets/LMS-3.png" alt="LMS Screenshot 4" class="carousel-slide">
+                  <img src="assets/LMS-4.png" alt="LMS Screenshot 5" class="carousel-slide">
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous image">‹</button>
+                <button class="carousel-btn carousel-next" aria-label="Next image">›</button>
+                <div class="carousel-dots"></div>
+              </div>
+            </div>
+            <h3 class="project-name">Learning Management System</h3>
+            <p class="project-desc">A full-featured LMS platform for educational institutions. Includes course
+              management, student tracking, and interactive learning modules.</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">MongoDB</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">// System Diagnostics</p>
+        <h2 class="section-heading glitch" data-text="Skills">Skills</h2>
+      </div>
+
+      <div class="skills-container fade-in">
+        <div class="skills-header">SYSTEM CAPABILITIES</div>
+
+        <!-- Technical Skills -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Technical Skills</h3>
+
+          <div class="skill-item">
+            <span class="skill-name">JavaScript/TS</span>
+            <div class="skill-bar">
+              <span class="skill-progress" data-value="90">[██████████████████░░]</span>
+            </div>
+            <span class="skill-percent">90%</span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-name">React</span>
+            <div class="skill-bar">
+              <span class="skill-progress" data-value="85">[█████████████████░░░]</span>
+            </div>
+            <span class="skill-percent">85%</span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-name">Node.js</span>
+            <div class="skill-bar">
+              <span class="skill-progress" data-value="80">[████████████████░░░░]</span>
+            </div>
+            <span class="skill-percent">80%</span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-name">MongoDB</span>
+            <div class="skill-bar">
+              <span class="skill-progress" data-value="75">[███████████████░░░░░]</span>
+            </div>
+            <span class="skill-percent">75%</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Tools -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Frameworks & Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">ES6+</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Shopify</span>
+            <span class="skill-tag">Liquid</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <!-- Professional Skills -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Professional Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">IT Technical Support</span>
+            <span class="skill-tag">Web Development</span>
+            <span class="skill-tag">Network Administration</span>
+            <span class="skill-tag">System Administration</span>
+            <span class="skill-tag">E-commerce Solutions</span>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Soft Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Time Management</span>
+            <span class="skill-tag">Adaptability</span>
+            <span class="skill-tag">Attention to Detail</span>
+            <span class="skill-tag">Team Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">// git log --oneline</p>
+        <h2 class="section-heading glitch" data-text="Experience">Experience</h2>
+      </div>
+
+      <div class="timeline">
+        <!-- Experience 1 - Current -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot pulse-glow"></div>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-hash">a3d8f92 (HEAD -> main)</span>
+            <div class="timeline-header-group">
+              <img src="assets/amwag.jpg" alt="Amwag Travel Logo" class="timeline-logo">
+              <div>
+                <h3 class="timeline-role">IT Manager</h3>
+                <p class="timeline-company">@ Amwag Travel</p>
+              </div>
+            </div>
+            <p class="timeline-date">Present</p>
+            <ul class="timeline-desc">
+              <li>Oversee the company's IT infrastructure, ensuring smooth operation of networks, systems, and software
+              </li>
+              <li>Manage technical support and resolve hardware/software issues efficiently</li>
+              <li>Implement and maintain internal tools to improve workflow and productivity</li>
+              <li>Collaborate with different departments to provide technology-based solutions</li>
+              <li>Earned two promotions by consistently delivering strong results</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-hash">7c2e491</span>
+            <div class="timeline-header-group">
+              <img src="assets/mnu.jpg" alt="MNU Logo" class="timeline-logo">
+              <div>
+                <h3 class="timeline-role">Computer Science & AI Student</h3>
+                <p class="timeline-company">@ Minya National University (MNU)</p>
+              </div>
+            </div>
+            <p class="timeline-date">2nd Year - Present</p>
+            <ul class="timeline-desc">
+              <li>Specializing in Artificial Intelligence</li>
+              <li>Studying core computer science subjects, AI algorithms, and modern technologies</li>
+              <li>Working on projects in machine learning and data analysis</li>
+              <li>Developing strong problem-solving and programming skills</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Certification -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-hash">9f1a3c2</span>
+            <h3 class="timeline-role">Google IT Technical Support Certificate</h3>
+            <p class="timeline-company">@ Google</p>
+            <p class="timeline-date">Certified</p>
+            <ul class="timeline-desc">
+              <li>Completed comprehensive IT support training program</li>
+              <li>Working towards additional certifications for Google's Professional IT certificate</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">// Establish Connection</p>
+        <h2 class="section-heading glitch" data-text="Contact">Contact</h2>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-terminal">
+          <div class="contact-header">
+            <div class="dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="contact-title">connection — established</span>
+          </div>
+
+          <div class="contact-body">
+            <p class="contact-prompt">
+              <span class="prompt">visitor@elshorbagy:~$</span>
+              <span class="command">cat contact_channels.txt</span>
+            </p>
+
+            <div class="contact-links">
+              <a href="https://github.com/elshorbagy" target="_blank" rel="noopener" class="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com/in/elshorbagy" class="contact-link" target="_blank"
+                rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://codeforces.com/profile/abameda" class="contact-link" target="_blank"
+                rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 20h4V10L6 10v10zM12 20h4V4l-4 0v16zM18 20h4V7L18 7v13z" fill="currentColor"
+                    stroke="none" />
+                </svg>
+                <span>Codeforces</span>
+              </a>
+            </div>
+
+            <!-- Contact Form -->
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xkoobnjl" method="POST">
+              <p class="contact-prompt" style="margin-bottom: 1.5rem;">
+                <span class="prompt">visitor@elshorbagy:~$</span>
+                <span class="command">./send_message.sh</span>
+              </p>
+
+              <!-- Hidden fields for device/location tracking -->
+              <input type="hidden" name="_subject" value="New Contact from Portfolio">
+              <input type="text" name="_gotcha" style="display:none"> <!-- Honeypot field for spam info -->
+              <input type="hidden" name="device_type" id="device_type">
+              <input type="hidden" name="browser" id="browser_info">
+              <input type="hidden" name="os" id="os_info">
+              <input type="hidden" name="screen_resolution" id="screen_res">
+              <input type="hidden" name="timezone" id="timezone_info">
+              <input type="hidden" name="language" id="language_info">
+              <input type="hidden" name="referrer" id="referrer_info">
+              <input type="hidden" name="page_url" id="page_url">
+              <input type="hidden" name="ip_info" id="ip_info">
+              <input type="hidden" name="timestamp" id="submit_time">
+
+              <label class="form-label" for="name">> Enter your name:</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+
+              <label class="form-label" for="email">> Enter your email:</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+
+              <label class="form-label" for="phone">> Enter your phone:</label>
+              <input type="tel" id="phone" name="phone" class="form-input" placeholder="+20 123 456 7890">
+
+              <label class="form-label" for="subject">> Enter subject:</label>
+              <input type="text" id="subject" name="subject" class="form-input" placeholder="Project Inquiry" required>
+
+              <label class="form-label" for="message">> Enter your message:</label>
+              <textarea id="message" name="message" class="form-textarea"
+                placeholder="Hello, I'd like to discuss a project..." required></textarea>
+
+              <button type="submit" class="btn btn-primary btn-effect form-submit">
+                > Transmit Message [ENTER]
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">
+        <span class="highlight">></span> Crafted with <span class="text-cyan">♥</span> and lots of <span
+          class="highlight">coffee</span>
+      </p>
+      <p class="footer-text" style="margin-top: 0.5rem;">
+        © <span id="current-year">2025</span> <span class="highlight">Abdelhmeed Elshorbagy</span> | All rights reserved
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/elshorbagy" class="footer-link" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/elshorbagy" class="footer-link" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://codeforces.com/profile/abameda" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 20h4V10L6 10v10zM12 20h4V4l-4 0v16zM18 20h4V7L18 7v13z" fill="currentColor" stroke="none" />
+          </svg>
+          <span>Codeforces</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hidden Terminal Easter Egg -->
+  <div class="hidden-terminal" id="hidden-terminal" aria-hidden="true">
+    <div class="hidden-terminal-content">
+      <div class="hidden-terminal-header">
+        <span>root@elshorbagy ~ secret_terminal</span>
+        <button class="hidden-terminal-close" aria-label="Close terminal">×</button>
+      </div>
+      <div class="hidden-terminal-body">
+        <div class="hidden-terminal-output" id="terminal-output"></div>
+        <div class="hidden-terminal-input-line">
+          <span class="prompt">visitor@elshorbagy:~$</span>
+          <input type="text" id="terminal-input" class="hidden-terminal-input" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="scripts/matrix.js"></script>
+  <script src="scripts/terminal.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
